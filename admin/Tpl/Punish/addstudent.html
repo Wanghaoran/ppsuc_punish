@@ -1,0 +1,86 @@
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__ACTION__/callbackType/closeCurrent/navTabId/punish_student" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+
+	      <div class="unit">
+		<label>姓名：</label>
+		<input type="text" name="name" class="required" />
+	      </div>
+	      <div class="unit">
+		<label>性别：</label>
+              <select class="combox" name="sex">
+                  <option value="男">男</option>
+                  <option value="女">女</option>
+                  </select>
+	      </div>
+            <div class="unit">
+                <label>身份证号：</label>
+                <input type="text" name="number" class="required" size="30" />
+            </div>
+            <div class="unit">
+                <label>学号：</label>
+                <input type="text" name="studentId" class="required" size="30" />
+            </div>
+            <div class="unit">
+                <label>所在大队及班级：</label>
+                <select class="combox" name="teamName" ref="className" refUrl="__APP__/ajax/getChildClass/key/{value}">
+                    <option value="">请选择</option>
+                    <option value="一大队">一大队</option>
+                    <option value="二大队">二大队</option>
+                    <option value="三大队">三大队</option>
+                    <option value="四大队">四大队</option>
+                    <option value="五大队">五大队</option>
+                </select>
+                <select class="combox" name="className" id="className">
+                    <option value="">请选择</option>
+                </select>
+
+                <div class="unit">
+                    <label>入学时间：</label>
+                    <input type="text" name="entranceTime" class="date textInput readonly" readonly="true" />
+                </div>
+
+                <div class="unit">
+                    <label>毕业时间：</label>
+                    <input type="text" name="graduationTime" class="date textInput readonly" readonly="true" />
+                </div>
+
+
+                <div class="unit">
+                    <label>处分类型：</label>
+                    <select class="combox" name="punlishType">
+                        <option value="记过">记过</option>
+                        <option value="警告">警告</option>
+                        <option value="留校察看">留校察看</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="unit">
+                <label>处分原因：</label>
+                <textarea name="content"  rows="5" cols="57" ></textarea>
+            </div>
+
+            <div class="unit">
+                <label>处分决定人：</label>
+                <input type="text" name="punlishDecision" class="required" />
+            </div>
+
+	      <div class="unit">
+		<label>备注：</label>
+		<textarea name="remark"  rows="3" cols="57" ></textarea>
+	</div>
+
+</div>
+		<div class="formBar">
+		  <ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>
