@@ -14,7 +14,26 @@
                   <option value="男">男</option>
                   <option value="女">女</option>
                   </select>
+              <label style="margin-left: 30px;width: 75px;">政治面貌：</label>
+              <select class="combox" name="politicalStatus">
+                  <option value="群众">群众</option>
+                  <option value="团员">团员</option>
+                  <option value="预备党员">预备党员</option>
+                  <option value="党员">党员</option>
+              </select>
 	      </div>
+            <div class="unit">
+                <label>民族：</label>
+                <input type="text" name="national" class="required" size="10" />
+                <label style="margin-left: 30px;width: 60px;">籍贯：</label>
+                <input type="text" name="nativePlace" class="required" size="10" />
+            </div>
+
+            <div class="unit">
+                <label>联系电话：</label>
+                <input type="text" name="telephone"/>
+            </div>
+
             <div class="unit">
                 <label>身份证号：</label>
                 <input type="text" name="number" class="required" size="30" />
@@ -22,6 +41,10 @@
             <div class="unit">
                 <label>学号：</label>
                 <input type="text" name="studentId" class="required" size="30" />
+            </div>
+            <div class="unit">
+                <label>警号：</label>
+                <input type="text" name="policeId" class="required" />
             </div>
             <div class="unit">
                 <label>所在大队及班级：</label>
@@ -43,10 +66,9 @@
                 </div>
 
                 <div class="unit">
-                    <label>毕业时间：</label>
-                    <input type="text" name="graduationTime" class="date textInput readonly" readonly="true" />
+                    <label>处分时间：</label>
+                    <input type="text" name="punlishTime" class="date textInput readonly" readonly="true" />
                 </div>
-
 
                 <div class="unit">
                     <label>处分类型：</label>

@@ -37,13 +37,14 @@
 			<th width="50">编号</th>
 			<th width="100">学生姓名</th>
 			<th width="100">学号</th>
-			<th width="100">身份证号</th>
+			<th width="80">警号</th>
 			<th width="100">所在大队</th>
 			<th width="100">所在班级</th>
-			<th width="100">入学时间</th>
-			<th width="100">处分时间</th>
-			<th width="100">处分类型</th>
-			<th width="100">处分决定人</th>
+			<th width="80">入学时间</th>
+			<th width="80">处分时间</th>
+			<th width="70">处分类型</th>
+			<th width="80">处分决定人</th>
+			<th width="50">状态</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -53,14 +54,19 @@
 			  <td><-{$r.id}-></td>
 			  <td><-{$r.name}-></td>
 			  <td><-{$r.studentId}-></td>
-			  <td><-{$r.number}-></td>
+			  <td><-{$r.policeId}-></td>
 			  <td><-{$r.teamName}-></td>
 			  <td><-{$r.className}-></td>
 			  <td><-{$r.entranceTime|date="Y-m-d", ###}-></td>
 			  <td><-{$r.addTime|date="Y-m-d", ###}-></td>
             <td><-{$r.punlishType}-></td>
             <td><-{$r.punlishDecision}-></td>
-			</tr>
+            <eq name="r.isUndo" value="1">
+                <td style="color: red;">未撤销</td>
+            <else/>
+                <td style="color: #0000ff;">已撤销</td>
+            </eq>
+        </tr>
 		</volist>
 		</tbody>
 	</table>

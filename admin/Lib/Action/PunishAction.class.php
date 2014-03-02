@@ -19,7 +19,7 @@ class PunishAction extends CommonAction {
         //当前页数
         $pageNum = !empty($_REQUEST['pageNum']) ? $_REQUEST['pageNum'] : 1;
         $page -> firstRow = ($pageNum - 1) * $listRows;
-        $result = $Punish-> field('id,name,number,studentId,teamName,className,entranceTime,punlishType,punlishDecision,addTime') -> where($where) -> limit($page -> firstRow . ',' . $page -> listRows) -> order('addtime DESC') -> select();
+        $result = $Punish-> field('id,name,policeId,studentId,teamName,className,entranceTime,punlishType,punlishDecision,addTime,isUndo') -> where($where) -> limit($page -> firstRow . ',' . $page -> listRows) -> order('addtime DESC') -> select();
         $this -> assign('result', $result);
         //每页条数
         $this -> assign('listRows', $listRows);
