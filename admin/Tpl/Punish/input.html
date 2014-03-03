@@ -1,0 +1,30 @@
+<div class="pageContent" xmlns="http://www.w3.org/1999/html">
+	<form method="post" action="__URL__/checkinput" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+		<div class="pageFormContent" layoutH="56">
+
+            <div>
+			<span>导入说明：</span>
+                <ul>
+                    <li style="line-height: 20px;"><span>1.请下载 <a href="" style="color: red;">批量下载填写文档</a> 并严格按照文档中的格式填写信息</span></li>
+                    <li style="line-height: 20px;"><span>2.填写完成后将文档上传到系统中，系统会自动执行导入，并给出导入结果。</span></li>
+                    <li style="line-height: 20px;"><span>3.Excel文件中，所有带有数字和日期的列，格式均设置为文本</span></li>
+                </ul>
+
+            </div>
+			<p style="margin-top: 30px;">
+				<label>上传文档：</label>
+				<input name="name" class="required" type="file"/>
+			</p>
+
+		</div>
+		<div class="formBar">
+			<ul>
+				<!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">上传</button></div></div></li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
