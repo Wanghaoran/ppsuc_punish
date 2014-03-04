@@ -88,6 +88,15 @@ class PunishAction extends CommonAction {
         $this -> display();
     }
 
+    //学院信息详情
+
+    public function studentinfo(){
+        $Punish = M('Punish');
+        $result = $Punish -> find($this -> _get('mid', 'intval'));
+        $this -> assign('result', $result);
+        $this -> display();
+    }
+
     //批量导入
     public function input(){
         $this -> display();

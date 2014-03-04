@@ -1,0 +1,93 @@
+<br/>
+
+<table class="table" width="100%">
+    <thead>
+    <tr>
+        <th> </th>
+        <th> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><b>姓名</b></td>
+        <td><-{$result.name}-></td>
+</tr>
+<tr>
+<td><b>性别</b></td>
+<td><-{$result.sex}-></td>
+</tr>
+<tr>
+<td><b>政治面貌</b></td>
+<td><-{$result.politicalStatus}-></td>
+</tr>
+<tr>
+<td><b>身份证号</b></td>
+<td><-{$result.number}-></td>
+</tr>
+<tr>
+<td><b>学号</b></td>
+<td><-{$result.studentId}-></td>
+</tr>
+<tr>
+<td><b>警号</b></td>
+<td><-{$result.policeId}-></td>
+</tr>
+<tr>
+<td><b>民族</b></td>
+<td><-{$result.national}-></td>
+</tr>
+<tr>
+<td><b>联系电话</b></td>
+<td><-{$result.telephone}-></td>
+</tr>
+<tr>
+<td><b>籍贯</b></td>
+<td><-{$result.nativePlace}-></td>
+</tr>
+<tr>
+<td><b>所在大队</b></td>
+<td><-{$result.teamName}-></td>
+</tr>
+<tr>
+<td><b>所在班级</b></td>
+<td><-{$result.className}-></td>
+</tr>
+    <tr>
+        <td><b>入学时间</b></td>
+        <td><-{$result.entranceTime|date="Y-m-d", ###}-></td>
+    </tr>
+    <tr>
+        <td><b>处分类型</b></td>
+        <td><-{$result.punlishType}-></td>
+    </tr>
+    <tr>
+        <td><b>处分内容</b></td>
+        <td><-{$result.content}-></td>
+    </tr>
+    <tr>
+        <td><b>处分决定人</b></td>
+        <td><-{$result.punlishDecision}-></td>
+    </tr>
+    <tr>
+        <td><b>处分时间</b></td>
+        <td><-{$result.punlishTime|date="Y-m-d", ###}-></td>
+    </tr>
+    <tr>
+        <td><b>添加时间</b></td>
+        <td><-{$result.addTime|date="Y-m-d H:i:s", ###}-></td>
+    </tr>
+    <tr>
+        <td><b>状态</b></td>
+        <eq name="result.isUndo" value="1">
+            <td style="color: red;">未撤销</td>
+        <else/>
+            <td style="color: #0000ff;">已撤销</td>
+        </eq>
+    </tr>
+    <tr>
+        <td><b>备注</b></td>
+        <td><-{$result.remark}-></td>
+    </tr>
+
+</tbody>
+</table>
