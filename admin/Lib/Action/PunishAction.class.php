@@ -1,34 +1,6 @@
 <?php
 class PunishAction extends CommonAction {
 
-    public function student(){
-        $Punish = M('Punish');
-        $where = array();
-        if(!empty($_POST['name'])){
-            $where['name'] = array('LIKE', '%' . $this -> _post('name') . '%');
-        }
-        //记录总数
-        $count = $Punish -> where($where) -> count('id');
-        import('ORG.Util.Page');
-        if(! empty ( $_REQUEST ['listRows'] )){
-            $listRows = $_REQUEST ['listRows'];
-        } else {
-            $listRows = 15;
-        }
-        $page = new Page($count, $listRows);
-        //当前页数
-        $pageNum = !empty($_REQUEST['pageNum']) ? $_REQUEST['pageNum'] : 1;
-        $page -> firstRow = ($pageNum - 1) * $listRows;
-        $result = $Punish-> field('id,name,policeId,studentId,teamName,className,entranceTime,punlishType,punlishDecision,addTime,isUndo') -> where($where) -> limit($page -> firstRow . ',' . $page -> listRows) -> order('addtime DESC') -> select();
-        $this -> assign('result', $result);
-        //每页条数
-        $this -> assign('listRows', $listRows);
-        //当前页数
-        $this -> assign('currentPage', $pageNum);
-        $this -> assign('count', $count);
-        $this -> display();
-    }
-
     public function addstudent(){
         if(!empty($_POST['name'])){
             $Punish = D('Punish');
@@ -78,7 +50,7 @@ class PunishAction extends CommonAction {
         //当前页数
         $pageNum = !empty($_REQUEST['pageNum']) ? $_REQUEST['pageNum'] : 1;
         $page -> firstRow = ($pageNum - 1) * $listRows;
-        $result = $Punish-> field('id,name,policeId,studentId,teamName,className,entranceTime,punlishType,punlishDecision,addTime,isUndo') -> where($where) -> limit($page -> firstRow . ',' . $page -> listRows) -> order('addtime DESC') -> select();
+        $result = $Punish-> field('id,name,policeId,studentId,teamName,className,entranceTime,punlishType,punlishDecision,punlishTime,isUndo') -> where($where) -> limit($page -> firstRow . ',' . $page -> listRows) -> order('addtime DESC') -> select();
         $this -> assign('result', $result);
         //每页条数
         $this -> assign('listRows', $listRows);
@@ -88,12 +60,61 @@ class PunishAction extends CommonAction {
         $this -> display();
     }
 
-    //学院信息详情
+    //撤销处分
+    public function undo(){
+        $Punish = M('Punish');
+        if(!empty($_POST['isUndo'])){
+            $_POST['undoTime'] = strtotime($_POST['undoTime']);
+            if(!$Punish -> create()){
+                $this -> error($Punish -> getError());
+            }
 
+            if($Punish -> save()){
+                $this -> success(L('DATA_UPDATE_SUCCESS'));
+            }else{
+                $this -> error(L('DATA_UPDATE_ERROR'));
+            }
+        }
+        $result = $Punish -> field('id,name,punlishTime,isUndo,undoTime,undoRemark') -> find($this -> _get('id', 'intval'));
+        $this -> assign('result', $result);
+
+        $datetime1 = new DateTime(date('Y-m-d', $result['punlishTime']));
+        $datetime2 = new DateTime();
+        $interval = $datetime1->diff($datetime2);
+        $diff = $interval->format('%y年%m月%d天%');
+        $this -> assign('diff', $diff);
+        $this -> display();
+    }
+
+    //学生信息详情
     public function studentinfo(){
         $Punish = M('Punish');
         $result = $Punish -> find($this -> _get('mid', 'intval'));
         $this -> assign('result', $result);
+        $this -> display();
+    }
+
+    //编辑学生信息
+    public function editstudent(){
+        $Punish = D('Punish');
+
+        if(!empty($_POST['name'])){
+            if(!$Punish -> create()){
+                $this -> error($Punish -> getError());
+            }
+
+            if($Punish -> save()){
+                $this -> success(L('DATA_UPDATE_SUCCESS'));
+            }else{
+                $this -> error(L('DATA_UPDATE_ERROR'));
+            }
+        }
+
+        $result = $Punish -> find($this -> _get('id', 'intval'));
+        $this -> assign('result', $result);
+        //班级信息
+        $class = R('Class/getChildClass', array($result['teamName']), 'Widget');
+        $this -> assign('class', $class);
         $this -> display();
     }
 

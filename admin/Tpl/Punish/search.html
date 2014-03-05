@@ -67,6 +67,10 @@
 
     <div class="panelBar">
 	  <ul class="toolBar">
+          <li><a class="add" href="__APP__/punish/addstudent" height="450" target="dialog" mask="true"><span>添加处分信息</span></a></li>
+
+          <li><a class="delete" href="__URL__/undo/id/{sid_role}" target="dialog" mask="true" warn="请选择学生信息"><span>处分撤销</span></a></li>
+          <li><a class="edit" href="__APP__/punish/editstudent/id/{sid_role}" height="450" target="dialog" mask="true" warn="请选择学生信息"><span>编辑学生信息</span></a></li>
       </ul>
 	</div>
 
@@ -92,13 +96,13 @@
 		<tr target="sid_role" rel="<-{$r.id}->">
 		  <td><input type="checkbox" value="<-{$r.id}->" name="ids"></td>
 			  <td><-{$r.id}-></td>
-			  <td><a href="__URL__/studentinfo/mid/<-{$r.id}->" height="495" target="dialog" title="用户详情" rel="studentinfo"><-{$r.name}-></a></td>
+			  <td><a href="__URL__/studentinfo/mid/<-{$r.id}->" height="535" target="dialog" title="用户详情" rel="studentinfo"><-{$r.name}-></a></td>
 			  <td><-{$r.studentId}-></td>
 			  <td><-{$r.policeId}-></td>
 			  <td><-{$r.teamName}-></td>
 			  <td><-{$r.className}-></td>
 			  <td><-{$r.entranceTime|date="Y-m-d", ###}-></td>
-			  <td><-{$r.addTime|date="Y-m-d", ###}-></td>
+			  <td><-{$r.punlishTime|date="Y-m-d", ###}-></td>
             <td><-{$r.punlishType}-></td>
             <td><-{$r.punlishDecision}-></td>
             <eq name="r.isUndo" value="1">

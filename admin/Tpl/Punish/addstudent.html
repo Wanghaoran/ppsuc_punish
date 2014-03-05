@@ -1,7 +1,7 @@
 <div class="page">
 	<div class="pageContent">
 	
-	<form method="post" action="__ACTION__/callbackType/closeCurrent/navTabId/punish_student" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+	<form method="post" action="__ACTION__/callbackType/closeCurrent/navTabId/punish_search" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
 		<div class="pageFormContent" layoutH="58">
 
 	      <div class="unit">
@@ -17,9 +17,9 @@
               <label style="margin-left: 30px;width: 75px;">政治面貌：</label>
               <select class="combox" name="politicalStatus">
                   <option value="群众">群众</option>
-                  <option value="团员">团员</option>
+                  <option value="共青团员">共青团员</option>
                   <option value="预备党员">预备党员</option>
-                  <option value="党员">党员</option>
+                  <option value="中共党员">中共党员</option>
               </select>
 	      </div>
             <div class="unit">
@@ -48,7 +48,7 @@
             </div>
             <div class="unit">
                 <label>所在大队及班级：</label>
-                <select class="combox" name="teamName" ref="className" refUrl="__APP__/ajax/getChildClass/key/{value}">
+                <select class="combox" name="teamName" ref="className2" refUrl="__APP__/ajax/getChildClass/key/{value}">
                     <option value="">请选择</option>
                     <option value="一大队">一大队</option>
                     <option value="二大队">二大队</option>
@@ -56,7 +56,7 @@
                     <option value="四大队">四大队</option>
                     <option value="五大队">五大队</option>
                 </select>
-                <select class="combox" name="className" id="className">
+                <select class="combox" name="className" id="className2">
                     <option value="">请选择</option>
                 </select>
 
@@ -75,7 +75,9 @@
                     <select class="combox" name="punlishType">
                         <option value="记过">记过</option>
                         <option value="警告">警告</option>
+                        <option value="严重警告">严重警告</option>
                         <option value="留校察看">留校察看</option>
+                        <option value="开除学籍">开除学籍</option>
                     </select>
                 </div>
 

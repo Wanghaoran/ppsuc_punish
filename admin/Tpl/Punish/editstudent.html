@@ -1,0 +1,224 @@
+<div class="page">
+	<div class="pageContent">
+	
+	<form method="post" action="__ACTION__/callbackType/closeCurrent/navTabId/punish_search" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+
+	      <div class="unit">
+		<label>姓名：</label>
+		<input type="text" name="name" class="required" value="<-{$result.name}->" />
+	      </div>
+	      <div class="unit">
+		<label>性别：</label>
+              <select class="combox" name="sex">
+                  <eq name="result.sex" value="男">
+                      <option value="男" selected="selected">男</option>
+                      <option value="女">女</option>
+                      <else/>
+                      <option value="男">男</option>
+                      <option value="女" selected="selected">女</option>
+                  </eq>
+
+                  </select>
+              <label style="margin-left: 30px;width: 75px;">政治面貌：</label>
+              <select class="combox" name="politicalStatus">
+                  <switch name="result.politicalStatus">
+                  <case value="群众">
+                      <option value="群众" selected="selected">群众</option>
+                      <option value="共青团员">共青团员</option>
+                      <option value="预备党员">预备党员</option>
+                      <option value="中共党员">中共党员</option>
+                  </case>
+                  <case value="共青团员">
+                      <option value="群众">群众</option>
+                      <option value="共青团员" selected="selected">共青团员</option>
+                      <option value="预备党员">预备党员</option>
+                      <option value="中共党员">中共党员</option>
+                  </case>
+                  <case value="预备党员">
+                      <option value="群众">群众</option>
+                      <option value="共青团员">共青团员</option>
+                      <option value="预备党员" selected="selected">预备党员</option>
+                      <option value="中共党员">中共党员</option>
+                  </case>
+                  <case value="中共党员">
+                      <option value="群众">群众</option>
+                      <option value="共青团员">共青团员</option>
+                      <option value="预备党员">预备党员</option>
+                      <option value="中共党员" selected="selected">中共党员</option>
+                  </case>
+                  </switch>
+              </select>
+	      </div>
+            <div class="unit">
+                <label>民族：</label>
+                <input type="text" name="national" class="required" size="10" value="<-{$result.national}->" />
+                <label style="margin-left: 30px;width: 60px;">籍贯：</label>
+                <input type="text" name="nativePlace" class="required" size="10" value="<-{$result.nativePlace}->" />
+            </div>
+
+            <div class="unit">
+                <label>联系电话：</label>
+                <input type="text" name="telephone" value="<-{$result.telephone}->"/>
+            </div>
+
+            <div class="unit">
+                <label>身份证号：</label>
+                <input type="text" name="number" class="required" size="30"  value="<-{$result.number}->"/>
+            </div>
+            <div class="unit">
+                <label>学号：</label>
+                <input type="text" name="studentId" class="required" size="30" value="<-{$result.studentId}->" />
+            </div>
+            <div class="unit">
+                <label>警号：</label>
+                <input type="text" name="policeId" class="required" value="<-{$result.policeId}->" />
+            </div>
+            <div class="unit">
+                <label>所在大队及班级：</label>
+                <select class="combox" name="teamName" ref="className2" refUrl="__APP__/ajax/getChildClass/key/{value}">
+                    <switch name="result.teamName">
+                        <case value="一大队">
+                            <option value="一大队" selected="selected">一大队</option>
+                            <option value="二大队">二大队</option>
+                            <option value="三大队">三大队</option>
+                            <option value="四大队">四大队</option>
+                            <option value="五大队">五大队</option>
+                        </case>
+
+                        <case value="二大队">
+                            <option value="一大队">一大队</option>
+                            <option value="二大队" selected="selected">二大队</option>
+                            <option value="三大队">三大队</option>
+                            <option value="四大队">四大队</option>
+                            <option value="五大队">五大队</option>
+                        </case>
+
+                        <case value="三大队">
+                            <option value="一大队">一大队</option>
+                            <option value="二大队">二大队</option>
+                            <option value="三大队" selected="selected">三大队</option>
+                            <option value="四大队">四大队</option>
+                            <option value="五大队">五大队</option>
+                        </case>
+
+                        <case value="四大队">
+                            <option value="一大队">一大队</option>
+                            <option value="二大队">二大队</option>
+                            <option value="三大队">三大队</option>
+                            <option value="四大队" selected="selected">四大队</option>
+                            <option value="五大队">五大队</option>
+                        </case>
+
+                        <case value="五大队">
+                            <option value="一大队">一大队</option>
+                            <option value="二大队">二大队</option>
+                            <option value="三大队">三大队</option>
+                            <option value="四大队">四大队</option>
+                            <option value="五大队" selected="selected">五大队</option>
+                        </case>
+
+
+
+                    </switch>
+
+                </select>
+                <select class="combox" name="className" id="className2">
+                    <volist name="class" id="c">
+                        <eq name="result.className" value="$c">
+                            <option value="<-{$key}->" selected="selected"><-{$c}-></option>
+                            <else/>
+                            <option value="<-{$key}->"><-{$c}-></option>
+                        </eq>
+                    </volist>
+                </select>
+
+                <div class="unit">
+                    <label>入学时间：</label>
+                    <input type="text" name="entranceTime" class="date textInput readonly" readonly="true" value="<-{$result.entranceTime|date='Y-m-d', ###}->" />
+                </div>
+
+                <div class="unit">
+                    <label>处分时间：</label>
+                    <input type="text" name="punlishTime" class="date textInput readonly" readonly="true" value="<-{$result.punlishTime|date='Y-m-d', ###}->" />
+                </div>
+
+                <div class="unit">
+                    <label>处分类型：</label>
+                    <select class="combox" name="punlishType">
+                        <switch name="result.punlishType">
+                            <case value="记过">
+                                <option value="记过" selected="selected">记过</option>
+                                <option value="警告">警告</option>
+                                <option value="严重警告">严重警告</option>
+                                <option value="留校察看">留校察看</option>
+                                <option value="开除学籍">开除学籍</option>
+                            </case>
+
+                            <case value="警告">
+                                <option value="记过">记过</option>
+                                <option value="警告" selected="selected">警告</option>
+                                <option value="严重警告">严重警告</option>
+                                <option value="留校察看">留校察看</option>
+                                <option value="开除学籍">开除学籍</option>
+                            </case>
+
+                            <case value="严重警告">
+                                <option value="记过">记过</option>
+                                <option value="警告">警告</option>
+                                <option value="严重警告" selected="selected">严重警告</option>
+                                <option value="留校察看">留校察看</option>
+                                <option value="开除学籍">开除学籍</option>
+                            </case>
+
+                            <case value="留校察看">
+                                <option value="记过">记过</option>
+                                <option value="警告">警告</option>
+                                <option value="严重警告">严重警告</option>
+                                <option value="留校察看" selected="selected">留校察看</option>
+                                <option value="开除学籍">开除学籍</option>
+                            </case>
+
+                            <case value="开除学籍">
+                                <option value="记过">记过</option>
+                                <option value="警告">警告</option>
+                                <option value="严重警告">严重警告</option>
+                                <option value="留校察看">留校察看</option>
+                                <option value="开除学籍" selected="selected">开除学籍</option>
+                            </case>
+
+
+
+                        </switch>
+                    </select>
+                </div>
+
+            </div>
+            <div class="unit">
+                <label>处分原因：</label>
+                <textarea name="content"  rows="5" cols="57" ><-{$result.content}-></textarea>
+            </div>
+
+            <div class="unit">
+                <label>处分决定人：</label>
+                <input type="text" name="punlishDecision" class="required" value="<-{$result.punlishDecision}->" />
+            </div>
+
+	      <div class="unit">
+		<label>备注：</label>
+		<textarea name="remark"  rows="3" cols="57" ><-{$result.remark}-></textarea>
+	</div>
+
+        <input type="hidden" name="id" value="<-{$Think.get.id}->">
+
+</div>
+		<div class="formBar">
+		  <ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+	</div>
+</div>

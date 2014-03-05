@@ -1,0 +1,54 @@
+<div class="page">
+    <div class="pageContent">
+
+        <form method="post" action="__ACTION__/callbackType/closeCurrent/navTabId/punish_search" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+            <div class="pageFormContent" layoutH="58">
+
+                <div class="unit">
+                    <label>学生姓名：</label>
+                    <input type="text" class="textInput disabled" disabled="disabled" value="<-{$result.name}->" />
+                </div>
+
+                <div class="unit">
+                    <label>处分时间：</label>
+                    <input type="text" class="textInput disabled" disabled="disabled" value="<-{$result.punlishTime|date='Y-m-d', ###}->" /><span style="line-height: 21px;height:21px;margin-left: 10px;">距离今天已经：<span style="color: red;"><-{$diff}-></span></span>
+                </div>
+
+                <div class="unit">
+                    <label>状态：</label>
+                    <eq name="result.isUndo" value="1">
+                        <input type="radio" name="isUndo" value="1" checked="checked"> 未撤销
+                        <input type="radio" name="isUndo" value="2"> 已撤销
+                    <else/>
+                        <input type="radio" name="isUndo" value="1"> 未撤销
+                        <input type="radio" name="isUndo" value="2" checked="checked"> 已撤销
+                    </eq>
+
+                </div>
+                <div class="unit">
+                    <label>撤销时间：</label>
+                    <empty name="result.undoTime">
+                        <input type="text" name="undoTime" class="date textInput readonly" readonly="true" />
+                    <else/>
+                        <input type="text" name="undoTime" class="date textInput readonly" readonly="true" value="<-{$result.undoTime|date='Y-m-d', ###}->" />
+                    </empty>
+                </div>
+
+                <div class="unit">
+                    <label>撤销备注：</label>
+                    <textarea name="undoRemark" rows="5" cols="57" ><-{$result.undoRemark}-></textarea>
+                </div>
+
+                <input type="hidden" name="id" value="<-{$Think.get.id}->">
+
+            </div>
+            <div class="formBar">
+                <ul>
+                    <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                    <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+                </ul>
+            </div>
+        </form>
+
+    </div>
+</div>

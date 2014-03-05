@@ -867,3 +867,4 @@ function outputnum($num){
     if($re == 0) $re = 6;
     return $re;
 }
+

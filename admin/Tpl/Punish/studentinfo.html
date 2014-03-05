@@ -88,6 +88,19 @@
         <td><b>备注</b></td>
         <td><-{$result.remark}-></td>
     </tr>
+    <tr>
+        <td><b>撤销时间</b></td>
+        <empty name="result.undoTime">
+            <td></td>
+        <else/>
+            <td><-{$result.undoTime|date="Y-m-d", ###}-></td>
+        </empty>
+
+    </tr>
+    <tr>
+        <td><b>撤销备注</b></td>
+        <td><-{$result.undoRemark}-></td>
+    </tr>
 
 </tbody>
 </table>
